@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>С ВОСЬМОЙ МАРТА</title>
+<title>Orbit</title>
 
 <style>
 
@@ -21,17 +21,15 @@ body{
     height:500px;
 }
 
-/* центральный gif */
 .center{
     position:absolute;
     width:140px;
-    height:140px;
     top:50%;
     left:50%;
-    transform:translate(-50%, -50%);
+    transform:translate(-50%,-50%);
 }
 
-/* вращение орбиты */
+/* вращение всей орбиты */
 .orbit{
     position:absolute;
     width:100%;
@@ -44,34 +42,30 @@ body{
     position:absolute;
     top:50%;
     left:50%;
-    transform-origin:0 0;
-}
-
-/* компенсация угла */
-.fix{
-    animation:counterspin 12s linear infinite;
 }
 
 /* сами картинки */
-.fix img{
+.item img{
     width:80px;
     height:80px;
+    animation:counter 12s linear infinite;
 }
 
-/* расположение по кругу */
-.i1{ transform:rotate(0deg) translate(200px); }
-.i2{ transform:rotate(60deg) translate(200px); }
-.i3{ transform:rotate(120deg) translate(200px); }
-.i4{ transform:rotate(180deg) translate(200px); }
-.i5{ transform:rotate(240deg) translate(200px); }
-.i6{ transform:rotate(300deg) translate(200px); }
+/* размещение + компенсация угла */
+.i1{ transform:rotate(0deg) translate(200px) rotate(0deg); }
+.i2{ transform:rotate(60deg) translate(200px) rotate(-60deg); }
+.i3{ transform:rotate(120deg) translate(200px) rotate(-120deg); }
+.i4{ transform:rotate(180deg) translate(200px) rotate(-180deg); }
+.i5{ transform:rotate(240deg) translate(200px) rotate(-240deg); }
+.i6{ transform:rotate(300deg) translate(200px) rotate(-300deg); }
 
 @keyframes spin{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(360deg); }
 }
 
-@keyframes counterspin{
+/* компенсация вращения орбиты */
+@keyframes counter{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(-360deg); }
 }
@@ -87,12 +81,12 @@ body{
 
 <div class="orbit">
 
-<div class="item i1"><div class="fix"><img src="img1.png"></div></div>
-<div class="item i2"><div class="fix"><img src="img2.png"></div></div>
-<div class="item i3"><div class="fix"><img src="img3.png"></div></div>
-<div class="item i4"><div class="fix"><img src="img4.png"></div></div>
-<div class="item i5"><div class="fix"><img src="img5.png"></div></div>
-<div class="item i6"><div class="fix"><img src="img6.png"></div></div>
+<div class="item i1"><img src="img1.png"></div>
+<div class="item i2"><img src="img2.png"></div>
+<div class="item i3"><img src="img3.png"></div>
+<div class="item i4"><img src="img4.png"></div>
+<div class="item i5"><img src="img5.png"></div>
+<div class="item i6"><img src="img6.png"></div>
 
 </div>
 
