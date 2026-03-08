@@ -15,60 +15,64 @@ body{
     background:black;
 }
 
-/* орбита */
-.orbit{
+/* общий контейнер */
+.wrapper{
     position:relative;
-    width:400px;
-    height:400px;
+    width:500px;
+    height:500px;
 }
 
-/* центральный gif */
+/* центральный GIF */
 .center{
     position:absolute;
+    width:140px;
+    height:140px;
     top:50%;
     left:50%;
-    width:120px;
-    transform:translate(-50%,-50%);
+    transform:translate(-50%, -50%);
 }
 
-/* контейнер каждой картинки */
+/* орбита */
+.orbit{
+    position:absolute;
+    width:100%;
+    height:100%;
+    animation:spin 12s linear infinite;
+}
+
+/* контейнер картинки */
 .item{
     position:absolute;
     top:50%;
     left:50%;
+    transform-origin:0 0;
+}
+
+/* сами картинки */
+.item img{
     width:80px;
     height:80px;
-
-    animation: orbit 10s linear infinite;
+    animation:counterspin 12s linear infinite;
 }
 
-/* сама картинка */
-.item img{
-    width:100%;
-    animation: keepStraight 10s linear infinite;
-}
+/* расположение по кругу */
+.i1{ transform:rotate(0deg) translate(200px); }
+.i2{ transform:rotate(60deg) translate(200px); }
+.i3{ transform:rotate(120deg) translate(200px); }
+.i4{ transform:rotate(180deg) translate(200px); }
+.i5{ transform:rotate(240deg) translate(200px); }
+.i6{ transform:rotate(300deg) translate(200px); }
 
-/* расстояние от центра */
-.item img{
-    transform:translateX(160px);
-}
-
-/* задержки чтобы распределить 6 картинок */
-.i1{ animation-delay:0s }
-.i2{ animation-delay:-1.66s }
-.i3{ animation-delay:-3.33s }
-.i4{ animation-delay:-5s }
-.i5{ animation-delay:-6.66s }
-.i6{ animation-delay:-8.33s }
-
-@keyframes orbit{
+/* вращение орбиты */
+@keyframes spin{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(360deg); }
 }
 
-@keyframes keepStraight{
-    from{ transform:translateX(160px) rotate(0deg); }
-    to{ transform:translateX(160px) rotate(-360deg); }
+/* обратное вращение картинок */
+@keyframes counterspin{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(-360deg); }
 }
 
 </style>
@@ -76,9 +80,11 @@ body{
 
 <body>
 
-<div class="orbit">
+<div class="wrapper">
 
 <img src="center.gif" class="center">
+
+<div class="orbit">
 
 <div class="item i1"><img src="img1.png"></div>
 <div class="item i2"><img src="img2.png"></div>
@@ -86,6 +92,8 @@ body{
 <div class="item i4"><img src="img4.png"></div>
 <div class="item i5"><img src="img5.png"></div>
 <div class="item i6"><img src="img6.png"></div>
+
+</div>
 
 </div>
 
