@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Rotating Images</title>
+<title>Orbit</title>
 
 <style>
 
@@ -15,42 +15,60 @@ body{
     background:black;
 }
 
-/* контейнер вращения */
+/* орбита */
 .orbit{
     position:relative;
     width:400px;
     height:400px;
-    animation:spin 10s linear infinite;
 }
-
-/* картинки вокруг */
-.orbit img{
-    position:absolute;
-    width:80px;
-    height:80px;
-}
-
-/* позиции 6 картинок */
-.img1{ top:0; left:50%; transform:translate(-50%,0);}
-.img2{ top:25%; right:0;}
-.img3{ bottom:25%; right:0;}
-.img4{ bottom:0; left:50%; transform:translate(-50%,0);}
-.img5{ bottom:25%; left:0;}
-.img6{ top:25%; left:0;}
 
 /* центральный gif */
 .center{
     position:absolute;
-    width:120px;
-    height:120px;
     top:50%;
     left:50%;
-    transform:translate(-50%, -50%);
+    width:120px;
+    transform:translate(-50%,-50%);
 }
 
-@keyframes spin{
-    from{ transform:rotate(0deg);}
-    to{ transform:rotate(360deg);}
+/* контейнер каждой картинки */
+.item{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:80px;
+    height:80px;
+
+    animation: orbit 10s linear infinite;
+}
+
+/* сама картинка */
+.item img{
+    width:100%;
+    animation: keepStraight 10s linear infinite;
+}
+
+/* расстояние от центра */
+.item img{
+    transform:translateX(160px);
+}
+
+/* задержки чтобы распределить 6 картинок */
+.i1{ animation-delay:0s }
+.i2{ animation-delay:-1.66s }
+.i3{ animation-delay:-3.33s }
+.i4{ animation-delay:-5s }
+.i5{ animation-delay:-6.66s }
+.i6{ animation-delay:-8.33s }
+
+@keyframes orbit{
+    from{ transform:rotate(0deg); }
+    to{ transform:rotate(360deg); }
+}
+
+@keyframes keepStraight{
+    from{ transform:translateX(160px) rotate(0deg); }
+    to{ transform:translateX(160px) rotate(-360deg); }
 }
 
 </style>
@@ -60,14 +78,14 @@ body{
 
 <div class="orbit">
 
-<img src="img1.png" class="img1">
-<img src="img2.png" class="img2">
-<img src="img3.png" class="img3">
-<img src="img4.png" class="img4">
-<img src="img5.png" class="img5">
-<img src="img6.png" class="img6">
-
 <img src="center.gif" class="center">
+
+<div class="item i1"><img src="img1.png"></div>
+<div class="item i2"><img src="img2.png"></div>
+<div class="item i3"><img src="img3.png"></div>
+<div class="item i4"><img src="img4.png"></div>
+<div class="item i5"><img src="img5.png"></div>
+<div class="item i6"><img src="img6.png"></div>
 
 </div>
 
