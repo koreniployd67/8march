@@ -1,1 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Rotating Images</title>
 
+<style>
+
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:black;
+}
+
+/* контейнер вращения */
+.orbit{
+    position:relative;
+    width:400px;
+    height:400px;
+    animation:spin 10s linear infinite;
+}
+
+/* картинки вокруг */
+.orbit img{
+    position:absolute;
+    width:80px;
+    height:80px;
+}
+
+/* позиции 6 картинок */
+.img1{ top:0; left:50%; transform:translate(-50%,0);}
+.img2{ top:25%; right:0;}
+.img3{ bottom:25%; right:0;}
+.img4{ bottom:0; left:50%; transform:translate(-50%,0);}
+.img5{ bottom:25%; left:0;}
+.img6{ top:25%; left:0;}
+
+/* центральный gif */
+.center{
+    position:absolute;
+    width:120px;
+    height:120px;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+}
+
+@keyframes spin{
+    from{ transform:rotate(0deg);}
+    to{ transform:rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="orbit">
+
+<img src="img1.png" class="img1">
+<img src="img2.png" class="img2">
+<img src="img3.png" class="img3">
+<img src="img4.png" class="img4">
+<img src="img5.png" class="img5">
+<img src="img6.png" class="img6">
+
+<img src="center.gif" class="center">
+
+</div>
+
+</body>
+</html>
