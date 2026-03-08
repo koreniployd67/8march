@@ -15,14 +15,13 @@ body{
     background:black;
 }
 
-/* общий контейнер */
 .wrapper{
     position:relative;
     width:500px;
     height:500px;
 }
 
-/* центральный GIF */
+/* центральный gif */
 .center{
     position:absolute;
     width:140px;
@@ -32,7 +31,7 @@ body{
     transform:translate(-50%, -50%);
 }
 
-/* орбита */
+/* вращение орбиты */
 .orbit{
     position:absolute;
     width:100%;
@@ -40,7 +39,7 @@ body{
     animation:spin 12s linear infinite;
 }
 
-/* контейнер картинки */
+/* позиция точки на орбите */
 .item{
     position:absolute;
     top:50%;
@@ -48,11 +47,15 @@ body{
     transform-origin:0 0;
 }
 
+/* компенсация угла */
+.fix{
+    animation:counterspin 12s linear infinite;
+}
+
 /* сами картинки */
-.item img{
+.fix img{
     width:80px;
     height:80px;
-    animation:counterspin 12s linear infinite;
 }
 
 /* расположение по кругу */
@@ -63,13 +66,11 @@ body{
 .i5{ transform:rotate(240deg) translate(200px); }
 .i6{ transform:rotate(300deg) translate(200px); }
 
-/* вращение орбиты */
 @keyframes spin{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(360deg); }
 }
 
-/* обратное вращение картинок */
 @keyframes counterspin{
     from{ transform:rotate(0deg); }
     to{ transform:rotate(-360deg); }
@@ -86,12 +87,12 @@ body{
 
 <div class="orbit">
 
-<div class="item i1"><img src="img1.png"></div>
-<div class="item i2"><img src="img2.png"></div>
-<div class="item i3"><img src="img3.png"></div>
-<div class="item i4"><img src="img4.png"></div>
-<div class="item i5"><img src="img5.png"></div>
-<div class="item i6"><img src="img6.png"></div>
+<div class="item i1"><div class="fix"><img src="img1.png"></div></div>
+<div class="item i2"><div class="fix"><img src="img2.png"></div></div>
+<div class="item i3"><div class="fix"><img src="img3.png"></div></div>
+<div class="item i4"><div class="fix"><img src="img4.png"></div></div>
+<div class="item i5"><div class="fix"><img src="img5.png"></div></div>
+<div class="item i6"><div class="fix"><img src="img6.png"></div></div>
 
 </div>
 
